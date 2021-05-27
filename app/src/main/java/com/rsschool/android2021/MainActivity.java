@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openSecondFragment(int min, int max) {
-        Log.d("!!!", "OPEN SECOND FRAGMENT");
         final Fragment secondFragment = SecondFragment.newInstance(min, max);
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, secondFragment).commit();
