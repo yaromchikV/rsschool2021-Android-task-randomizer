@@ -1,11 +1,13 @@
 package com.rsschool.android2021
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import kotlin.random.Random
 
@@ -24,6 +26,7 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         result = view.findViewById(R.id.result)
         backButton = view.findViewById(R.id.back)
 
@@ -34,8 +37,15 @@ class SecondFragment : Fragment() {
         result?.text = randomNumber.toString()
 
         backButton?.setOnClickListener {
-            // TODO: implement back
-            FirstFragment.newInstance(randomNumber)
+            activity?.let {
+                (it as MainActivity).openFirstFragment(randomNumber)
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            activity?.let {
+                (it as MainActivity).openFirstFragment(randomNumber)
+            }
         }
     }
 
@@ -44,7 +54,6 @@ class SecondFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(min: Int, max: Int): SecondFragment {
             return SecondFragment().apply {

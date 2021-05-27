@@ -1,6 +1,7 @@
 package com.rsschool.android2021;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,14 +17,16 @@ public class MainActivity extends AppCompatActivity {
         openFirstFragment(0);
     }
 
-    private void openFirstFragment(int previousNumber) {
+    public void openFirstFragment(int previousNumber) {
         final Fragment firstFragment = FirstFragment.newInstance(previousNumber);
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, firstFragment);
-        // TODO: invoke function which apply changes of the transaction
+        transaction.replace(R.id.container, firstFragment).commit();
     }
 
-    private void openSecondFragment(int min, int max) {
-        // TODO: implement it
+    public void openSecondFragment(int min, int max) {
+        Log.d("!!!", "OPEN SECOND FRAGMENT");
+        final Fragment secondFragment = SecondFragment.newInstance(min, max);
+        final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, secondFragment).commit();
     }
 }
