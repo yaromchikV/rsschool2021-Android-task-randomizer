@@ -48,7 +48,7 @@ class FirstFragment : Fragment() {
 
             if (errorMessage.isEmpty()) {
                 activity?.let {
-                    (it as MainActivity).openSecondFragment(min.toInt(), max.toInt())
+                    (it as Launcher).openSecondFragment(min.toInt(), max.toInt())
                 }
             } else {
                 val toast = Toast.makeText(

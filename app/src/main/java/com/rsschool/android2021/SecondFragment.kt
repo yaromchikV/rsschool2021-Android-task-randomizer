@@ -44,7 +44,7 @@ class SecondFragment : Fragment() {
 
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             activity?.let {
-                (it as MainActivity).openFirstFragment(randomNumber)
+                (it as Launcher).openFirstFragment(randomNumber)
             }
         }
     }
